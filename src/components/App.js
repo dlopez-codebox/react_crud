@@ -1,49 +1,32 @@
-import { Button, Container, Spinner } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import CustomerList from "./Customer/CustomerList";
+import { Container } from "react-bootstrap";
+import CustomerContainer from "./Customer/CustomerContainer";
 import NavigationBar from "./NavigationBar";
+import ProductDetailContainer from "./Products/ProductDetailContainer";
+import ProductsContainer from "./Products/ProductsContainer";
+import React from "react";
 
 const App = () => {
-  const [customers, setCustomers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(async () => {
-    setIsLoading(true);
-
-    const response = await fetch(
-      "https://northwindrestservices.azurewebsites.net/customer",
-      {
-        headers: {
-          Authorization: "Basic YWRtaW46YWRtaW4=",
-        },
-      }
-    );
-
-    const data = await response.json();
-
-    setTimeout(() => {
-      console.log("");
-    }, 3000);
-
-    setCustomers(data);
-    setIsLoading(false);
-  }, []);
-
   return (
-
+    <Router>
     <Container>
       <NavigationBar />
 
-      {isLoading && (
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      )}
+<Switch>
 
-      {!isLoading && <CustomerList CustomerList={customers} />}
+<Route exact path="/" component={CustomerContainer}/>
+<Route exact path="/products" component={ProductsContainer}/>
+<Route exact path="/products/:id" component={ProductDetailContainer}/>
+
+</Switch>
+
+    
+     
+
+
     </Container>
-   
+    </Router>
   );
 };
 

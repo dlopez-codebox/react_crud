@@ -30,7 +30,7 @@ const CustomerList = (props) => {
   return (
     <div>
       <br />
-      <Customer showStatus={true} />
+      {/* <Customer showStatus={true} /> */}
       <Breadcrumb>
         <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
