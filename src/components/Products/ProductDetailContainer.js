@@ -21,16 +21,15 @@ const ProductDetailContainer = () => {
     setProduct(data);
   };
 
-useEffect(() => {
-   setIsLoading(true);
-   fetchData();
-   setIsLoading(false);
-}, [id])
+  useEffect(() => {
+    setIsLoading(true);
+    fetchData();
+    setIsLoading(false);
+  }, [id]);
 
   return (
     <div>
-
-{isLoading && (
+      {isLoading && (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
