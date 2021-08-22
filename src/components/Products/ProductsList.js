@@ -2,6 +2,7 @@ import { Badge, Breadcrumb, Button, Table } from "react-bootstrap";
 import React, { useContext, useEffect, useState } from "react";
 
 import { CartContext } from "../Context/CartContext";
+import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 
 const ProductsList = (props) => {
@@ -97,9 +98,7 @@ const ProductsList = (props) => {
                     </Link>
                   </td>
                   <td>
-                    <Button onClick={()=>addProductToCart(product)}>+</Button>
-
-                    <Button onClick={()=>removeValue()}>-</Button>
+                   <ItemCount/>
                   </td>
                   <td>
                     <Button variant="secondary" onClick={() => {}}>
